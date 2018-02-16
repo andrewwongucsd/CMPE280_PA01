@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Login Page</title>
+  <script> </script>
+  <style>
+  Html, body{
+	height:100%;
+    margin:0px;
+    padding:0px;
+}
+.parentContainer{
+        display:table;
+        height:100%;
+        margin: 0 auto;
+}
+.childContainer{
+    display:table-cell;
+    vertical-align:middle;
+    width: 350px;
+}
+.childContainer #loginForm{
+  border-left: 2px solid #000;
+  border-right: 2px solid #000;
+  border-bottom: 2px solid #000;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  padding: 10px;
+}
+#title{
+  text-align: center;
+  background-color: gainsboro;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-left: 2px solid #000;
+  border-top: 2px solid #000;
+  border-right: 2px solid #000;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.childContainer #loginForm p{
+  margin-left: 5%;
+}
+.childContainer #loginForm p #username{
+  margin-left: 12%;
+  width: 55%;
+  box-shadow: 0px 0px 0.5px 0.5px rgb(0, 0, 0);
+}
+.childContainer #loginForm p #password{
+  margin-left: 12%;
+  width: 55%;
+  box-shadow: 0px 0px 0.5px 0.5px rgb(0, 0, 0);
+}
+.childContainer #loginForm button{
+  margin-left: 7%;
+    border-radius: 50px;
+    border: 2px solid #000;
+    width: 72px;
+}
+p, button, div#title{
+  font-family: "Arial", Sans-serif	;
+  font-weight: bold;
+  font-size: 13px;
+}
+.childContainer #loginForm p:nth-child(3){
+  margin-top: 10%;
+  color: blue;
+}
+.childContainer #loginForm p:nth-child(1){
+  margin-top: 10%;
+}
+  </style>
+</head>
+<body>
+  <div class="parentContainer">
+    <div class="childContainer">
+      <div id="title"> User Login</div>
+      <form id="loginForm">
+        <p>Username: <input type="text" id="username" /></p>
+        <p>Password: <input type="text" id="password" /></p>
+        <p>Create Account/Forgot?
+        <button id="loginButton" type="button"> Login </button></p>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

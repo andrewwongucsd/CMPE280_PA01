@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Login Page</title>
+  <script> </script>
+  <style>
+  Html, body{
+	height:100%;
+    margin:0px;
+    padding:0px;
+}
+.parentContainer{
+        display:table;
+        height:100%;
+        margin: 0 auto;
+}
+.childContainer{
+    display:table-cell;
+    vertical-align:middle;
+    width: 94%;
+}
+.childContainer #loginForm{
+  border-left: 2px solid #000;
+  border-right: 2px solid #000;
+  border-bottom: 2px solid #000;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  padding: 10px;
+}
+#title{
+  text-align: center;
+  background-color: gainsboro;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-left: 2px solid #000;
+  border-top: 2px solid #000;
+  border-right: 2px solid #000;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.childContainer #loginForm p{
+  margin-left: 5%;
+}
+.childContainer #loginForm p #username{
+  margin-left: 12%;
+  width: 55%;
+  box-shadow: 0px 0px 0.5px 0.5px rgb(0, 0, 0);
+}
+.childContainer #loginForm p #password{
+  margin-left: 12%;
+  width: 55%;
+  box-shadow: 0px 0px 0.5px 0.5px rgb(0, 0, 0);
+}
+.childContainer #loginForm button{
+  margin-right: 6%;
+  border-radius: 6px;
+  border: 2px solid #000;
+  height: 36px;
+      background-color: white;
+}
+p, button, div#title{
+  font-family: "Arial", Sans-serif	;
+  font-weight: bold;
+  font-size: 13px;
+}
+.childContainer #loginForm p:nth-child(3){
+  margin-top: 10%;
+  color: blue;
+}
+
+ul {
+  display: inline-block;
+  list-style: none;
+  margin-left: 3%;
+}
+li:before{
+  content: "¤";
+    display: block;
+    float: left;
+    width: 1.2em;
+}
+li:first-child {
+  margin-bottom: 50px;
+
+}
+.childContainer #loginForm img{
+  margin-left: 206px;
+  padding: 0px;
+}
+  </style>
+</head>
+<body>
+  <div class="parentContainer">
+    <div class="childContainer">
+      <div id="title">Question 1</div>
+      <form id="loginForm">
+        <p>Given points (x1, y1) and (x2, y2) select the formula to find the equation of the given line</p>
+        <ul>
+          <li><math display='block'><mrow><mi>y</mi><mo>=</mo><mi>mx</mi><mo>+</mo><mi>b</mi></mrow></math></li>
+          <li><math display='block'><mi>y</mi><mo>-</mo><msub><mi>y</mi><mn>1</mn></msub><mo>=</mo><mi>m</mi><mo>(</mo><mi>x</mi><mo>-</mo><msub><mi>x</mi><mn>1</mn></msub><mo>)</mo></math></li>
+        </ul>
+        <ul>
+          <li><math display='block'><mrow><mi>(</mi><mi>x</mi><mo>-</mo><mi>h</mi><msup><mi>)</mi><mn>2</mn></msup><mo>+</mo><mi>(</mi><mi>y</mi><mo>-</mo><mi>k</mi><msup><mi>)</mi><mn>2</mn></msup><mo>=</mo><msup><mi>r</mi><mn>2</mn></msup></math></li>
+          <li><math display='block'><mi>y</mi><mo>-</mo><msub><mi>y</mi><mn>2</mn></msub><mo>=</mo><mfrac><mrow><msub><mi>y</mi><mn>2</mn></msub><mo>-</mo><msub><mi>y</mi><mn>1</mn></msub></mrow><mrow><msub><mi>x</mi><mn>2</mn></msub><mo>-</mo><msub><mi>x</mi><mn>1</mn></mrow></mfrac><mi>(</mi><mi>x</mi><mo>-</mo><msub><mi>x</mi><mn>2</mn></msub><mi>)</mi></math></li>
+        </ul>
+        <img src="coordinates.png"></img>
+        <p><button id="submit" type="button">Submit & Next Question </button>
+        <button id="cancel" type="button">Cancel & Clear Selection </button></p>
+      </form>
+
+    </div>
+  </div>
+</body>
+</html>
