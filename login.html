@@ -3,7 +3,26 @@
 <head>
   <meta charset="utf-8">
   <title>Login Page</title>
-  <script> </script>
+  <script>
+  function setCookie(user, answered, correct){
+    document.cookie = ""+user+","+answered+","+correct+";";
+    var cookies = document.cookie.split(";");
+    for(var i = 0; i < cookies.length; i++){
+      var tuples = document.cookie.split(",");
+      for(var j = 0; j < tuples.length; j++){
+        alert(tuples[j]);
+      }
+    }
+  }
+  function redirect(url){
+    window.location.href = url;
+  }
+  function buttonClicked(){
+    var username = document.getElementById("username").value;
+    setCookie(username,0,0);
+    redirect("mathML.html");
+  }
+</script>
   <style>
   Html, body{
 	height:100%;
@@ -53,7 +72,7 @@
   box-shadow: 0px 0px 0.5px 0.5px rgb(0, 0, 0);
 }
 .childContainer #loginForm button{
-  margin-left: 7%;
+  margin-left: 15%;
     border-radius: 50px;
     border: 2px solid #000;
     width: 72px;
@@ -80,7 +99,7 @@ p, button, div#title{
         <p>Username: <input type="text" id="username" /></p>
         <p>Password: <input type="text" id="password" /></p>
         <p>Create Account/Forgot?
-        <button id="loginButton" type="button"> Login </button></p>
+        <button id="loginButton" onclick="buttonClicked()" type="button"> Login </button></p>
       </form>
     </div>
   </div>

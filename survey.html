@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Question 3</title>
+  <title>Survey</title>
   <script>
+
 
   function redirect(url){
     window.location.href = url;
@@ -13,6 +14,7 @@
     var id = "option"+number;
     if(options[number]){
       options[number] = false;
+      document.getElementById(id).classList.remove('checked');
       document.getElementById(id).classList.add('unchecked');
     }else{
       options[number] = true;
@@ -26,28 +28,10 @@
     window.location.href = url;
   }
   function submitClicked(){
-    var cookies = document.cookie.split(";");
-    var username = "";
-    var answered = 0;
-    var correct = 0;
-    for(var i = 0; i < cookies.length; i++){
-      var tuples = cookies[i].split(",");
-      username = tuples[0];
-      answered = parseInt(tuples[1]) + 1;
-      correct = parseInt(tuples[2]);
-    }
-    if(options[0] == true && options[1] == false && options[2] == false && options[3] == false){
-      correct = correct + 1;
-    }
-    setCookie(username, answered, correct);
-    redirect("survey.html");
+    redirect("scoreCard.html");
   }
   function clearClicked(){
-    options = [false, false, false, false];
-    for(var i = 0; i < options.length; i++){
-      var id = "option"+i;
-      document.getElementById(id).classList.add('unchecked');
-    }
+    document.getElementById("textarea").value = "";
   }
 
   </script>
@@ -61,7 +45,7 @@
         display:table;
         height:100%;
         margin: 0 auto;
-        width: 55%;
+        width: 35%;
 }
 .childContainer{
     display:table-cell;
@@ -74,7 +58,7 @@
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   padding: 10px;
-  height: 400px;
+  height: 300px;
 }
 #title{
   text-align: center;
@@ -112,6 +96,10 @@ p, button, div#title{
   font-weight: bold;
   font-size: 13px;
 }
+h1{
+  font-family: "Arial", Sans-serif	;
+  font-size: 15px;
+}
 .childContainer #loginForm p:nth-child(3){
   margin-top: 10%;
   color: blue;
@@ -147,6 +135,12 @@ p, button, div#title{
   font-size: 30px;
   margin-top: 20%;
 }
+.grandchildContainer .left-panel.survey-left{
+  margin-top: 0%;
+}
+.grandchildContainer .right-panel.survey-right{
+  margin-top: 0%;
+}
 .grandchildContainer .right-panel{
   width: 50%;
   float: right;
@@ -156,6 +150,7 @@ p, button, div#title{
 .grandchildContainer{ margin-top: 5%; margin-left: 5%;}
 #NASAplayer{ width: 100%; height: 320px;}
 .footnote{ font-size: 11px;}
+.textarea{ float: right;margin-right: 20%;}
 </style>
 </head>
 <body>
@@ -163,40 +158,37 @@ p, button, div#title{
     <div class="childContainer">
       <div id="title">Question 3</div>
       <form id="loginForm">
-        <div class="left-panel">
-          <p>Watch the video ans answer the following question. <br> What is the srouce as mentioned in the video?</p>
             <div class="grandchildContainer">
-              <div class="left-panel" id="left-selection">
-                <div class="options-row">
-                  ⦿ <button id="option0" class="unchecked" onclick="optionClicked(0)" type="button">NASA.Gov</button></br>
-                </div>
-                <div class="options-row">
-                  ⦿ <button id="option1" class="unchecked" onclick="optionClicked(1)" type="button">Facebook</button>
-                </div>
+              <div>
+                <h1>How Did you like the center?</h1>
+                Comment:  <textarea id="textarea" class="textarea" rows="4" cols="50"></textarea>
+              </div>
+              <h1 style="margin-top: 50px;">Select Text Area Location:</h1>
+              <div class="left-panel survey-left">
+                <span class="footnote">City:</span>
+                <select>
+                  <option value="San-Jose">San Jose</option>
+                  <option value="San-Francisco">San Francisco</option>
+                  <option value="Mountain-View">Mountain View</option>
+                  <option value="Palo-Alto">Palo Alto</option>
+                </select>
                 <div class="submit-row"><button id="submit" onclick="submitClicked()" type="button">Submit & Next Question </button>
                 </div>
               </div>
-              <div class="right-panel" id="right-selection">
-                <div class="options-row">
-                  ⦿ <button id="option2" class="unchecked" onclick="optionClicked(2)" type="button">Data.Gov</button></br>
-                </div>
-                <div class="options-row">
-                  ⦿ <button id="option3" class="unchecked" onclick="optionClicked(3)" type="button">XYZ.net</button></br>
-                </div>
+              <div class="right-panel survey-right">
+                <span class="footnote">Room Number#:</span>
+                <select>
+                  <option value="Room-337">Room 337</option>
+                  <option value="Room-210">Room 210</option>
+                  <option value="Room-110">Room 110</option>
+                  <option value="Room-410">Room 410</option>
+                </select>
                 <div class="submit-row">
                 <button id="cancel" onclick="clearClicked()" type="button">Cancel & Clear Selection </button>
               </div>
 
-              </div>
             </div>
         </div>
-        <div class="right-panel">
-          <iframe id="NASAplayer" allowfullscreen="1" allow="autoplay; encrypted-media" title="YouTube video player" src="https://www.youtube.com/embed/?autoplay=0&amp;controls=1&amp;enablejsapi=1&amp;rel=0&amp;showinfo=1&amp;autohide=1&amp;origin=https%3A%2F%2Fwww.nasa.gov&amp;widgetid=1" frameborder="0"></iframe>
-          <p>Expedition 40 Undocks Ending Mission</p>
-          <span class="footnote"> Source: https://www.nasa.gov/mission_pages/station/expeditions/expedition40/videos/index.html </span>
-        </div>
-
-
       </form>
 
     </div>

@@ -2,10 +2,235 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Login Page</title>
-  <script> document.write("This is from script")</script>
+  <title>Question 3</title>
+  <script>
+
+  function redirect(url){
+    window.location.href = url;
+  }
+   var options = [false, false, false, false, false, false];
+  function optionClicked(number){
+    var id = "option"+number;
+    if(options[number]){
+      options[number] = false;
+      document.getElementById(id).classList.remove('checked');
+      document.getElementById(id).classList.add('unchecked');
+    }else{
+      if(number <= 2){
+        for(var i = 0; i <= 2; i++){
+          options[i] = false;
+          document.getElementById("option"+i).classList.add('unchecked');
+        }
+      }else{
+        for(var i = 3; i <= 5; i++){
+          options[i] = false;
+          document.getElementById("option"+i).classList.add('unchecked');
+        }
+       }
+      options[number] = true;
+      document.getElementById(id).classList.remove('unchecked');
+    }
+  }
+  function setCookie(user, answered, correct){
+    document.cookie = ""+user+","+answered+","+correct+";";
+  }
+  function redirect(url){
+    window.location.href = url;
+  }
+  function submitClicked(){
+    var cookies = document.cookie.split(";");
+    var username = "";
+    var answered = 0;
+    var correct = 0;
+    for(var i = 0; i < cookies.length; i++){
+      var tuples = cookies[i].split(",");
+      username = tuples[0];
+      answered = parseInt(tuples[1]) + 1;
+      correct = parseInt(tuples[2]);
+    }
+    if(options[0] == true && options[1] == false && options[2] == false && options[3] == false && options[3] == false && options[4] == false && options[5] == true){
+      correct = correct + 1;
+    }
+    setCookie(username, answered, correct);
+    redirect("videoSCO.html");
+  }
+  function clearClicked(){
+
+  }
+  function blankClicked(number){
+
+    if(number == 1){
+      if(document.getElementById("right-selection").style.backgroundColor != 'transparent'){
+        document.getElementById("right-selection").style.backgroundColor = 'transparent';
+      }
+      document.getElementById("left-selection").style.backgroundColor = "#00FFFF";
+      setTimeout(function(){
+        document.getElementById("left-selection").style.backgroundColor = 'transparent';
+      }, 2000);
+    }else{
+      if(document.getElementById("left-selection").style.backgroundColor != 'transparent'){
+        document.getElementById("left-selection").style.backgroundColor = 'transparent';
+      }
+      document.getElementById("right-selection").style.backgroundColor = "#00FFFF";
+      setTimeout(function(){
+        document.getElementById("right-selection").style.backgroundColor = 'transparent';
+      }, 2000);
+    }
+
+  }
+
+  </script>
+  <style>
+  Html, body{
+	height:100%;
+    margin:0px;
+    padding:0px;
+}
+.parentContainer{
+        display:table;
+        height:100%;
+        margin: 0 auto;
+        width: 55%;
+}
+.childContainer{
+    display:table-cell;
+    vertical-align:middle;
+}
+.childContainer #loginForm{
+  border-left: 2px solid #000;
+  border-right: 2px solid #000;
+  border-bottom: 2px solid #000;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  padding: 10px;
+  height: 255px;
+}
+#title{
+  text-align: center;
+  background-color: gainsboro;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-left: 2px solid #000;
+  border-top: 2px solid #000;
+  border-right: 2px solid #000;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.childContainer #loginForm p{
+  margin-left: 5%;
+}
+.childContainer #loginForm p #username{
+  margin-left: 12%;
+  width: 55%;
+  box-shadow: 0px 0px 0.5px 0.5px rgb(0, 0, 0);
+}
+.childContainer #loginForm p #password{
+  margin-left: 12%;
+  width: 55%;
+  box-shadow: 0px 0px 0.5px 0.5px rgb(0, 0, 0);
+}
+.childContainer #loginForm .submit-row button{
+  margin-right: 6%;
+  border-radius: 6px;
+  border: 2px solid #000;
+  height: 36px;
+  background-color: white;
+}
+p, button, div#title{
+  font-family: "Arial", Sans-serif	;
+  font-weight: bold;
+  font-size: 13px;
+}
+.childContainer #loginForm p:nth-child(3){
+  margin-top: 10%;
+  color: blue;
+}
+
+.childContainer #loginForm img{
+  margin-left: 20%;
+  padding: 0px;
+  margin-top: 10%;
+}
+.options-row button{
+  background: transparent;
+  font-size: 15px;
+}
+.unchecked{
+  border: none;
+}
+.submit-row{
+  margin-top: 10%;
+}
+.left-panel{
+  width: 55%;
+  float: left;
+}
+.right-panel{
+  width: 45%;
+  float: right;
+}
+.grandchildContainer .left-panel{
+  width: 50%;
+  float: left;
+  font-size: 30px;
+}
+.grandchildContainer .right-panel{
+  width: 50%;
+  float: right;
+  font-size: 30px;
+}
+.grandchildContainer{ margin-top: 5%; margin-left: 5%;}
+</style>
 </head>
 <body>
-  <p>Hello!</p>
+  <div class="parentContainer">
+    <div class="childContainer">
+      <div id="title">Question 3</div>
+      <form id="loginForm">
+        <div class="left-panel">
+          <p>As per the latest twitter news, complete the article snippet given by selecting appropriate choices for the blanks.</p>
+            <div class="grandchildContainer">
+              <div class="left-panel" id="left-selection">
+                <div class="options-row">
+                  ⦿ <button id="option0" class="unchecked" onclick="optionClicked(0)" type="button">Option 1 Mark 1: $650</button></br>
+                </div>
+                <div class="options-row">
+                  ⦿ <button id="option1" class="unchecked" onclick="optionClicked(1)" type="button">Option 2 Mark 1: $550</button>
+                </div>
+                <div class="options-row">
+                  ⦿ <button id="option2" class="unchecked" onclick="optionClicked(2)" type="button">Option 3 Mark 1: $450</button>
+                </div>
+                <div class="submit-row"><button id="submit" onclick="submitClicked()" type="button">Submit & Next Question </button>
+                </div>
+              </div>
+              <div class="right-panel" id="right-selection">
+                <div class="options-row">
+                  ⦿ <button id="option3" class="unchecked" onclick="optionClicked(3)" type="button">Option 1 Mark 2: Twitter</button></br>
+                </div>
+                <div class="options-row">
+                  ⦿ <button id="option4" class="unchecked" onclick="optionClicked(4)" type="button">Option 1 Mark 2: Google</button></br>
+                </div>
+                <div class="options-row">
+                  ⦿ <button id="option5" class="unchecked" onclick="optionClicked(5)" type="button">Option 1 Mark 2: Facebook</button></br>
+                </div>
+                <div class="submit-row">
+                <button id="cancel" onclick="clearClicked()" type="button">Cancel & Clear Selection </button>
+              </div>
+
+              </div>
+            </div>
+        </div>
+        <div class="right-panel">
+          "<br>
+          Twitter wants more cash. The company announced two <span onclick="blankClicked(1)" id="blank-01">$______ </span>million debt offerings in a filling day, each with a potential $100 increase provided that the sales are oversubscribted. Assuming full tip, including the $100 million boosters. <span onclick="blankClicked(2)" id="blank-02">______ </span>will raise up to $1.5 billion with the two offerings.
+          <br>"
+          <br>Source: http://techcrunch.com/2014/10/twitter-to-raise-up-to-1-5b-in-debt-offering/
+        </div>
+
+
+      </form>
+
+    </div>
+  </div>
 </body>
 </html>

@@ -2,8 +2,55 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Login Page</title>
-  <script> </script>
+  <title>Question 1</title>
+  <script>
+
+  function redirect(url){
+    window.location.href = url;
+  }
+   var options = [false, false, false, false];
+  function optionClicked(number){
+    var id = "option"+number;
+    if(options[number]){
+      options[number] = false;
+      document.getElementById(id).classList.add('unchecked');
+    }else{
+      options[number] = true;
+      document.getElementById(id).classList.remove('unchecked');
+    }
+  }
+  function setCookie(user, answered, correct){
+    document.cookie = ""+user+","+answered+","+correct+";";
+  }
+  function redirect(url){
+    window.location.href = url;
+  }
+  function submitClicked(){
+    var cookies = document.cookie.split(";");
+    var username = "";
+    var answered = 0;
+    var correct = 0;
+    for(var i = 0; i < cookies.length; i++){
+      var tuples = cookies[i].split(",");
+      username = tuples[0];
+      answered = parseInt(tuples[1]) + 1;
+      correct = parseInt(tuples[2]);
+    }
+    if(options[0] == true && options[1] == true && options[2] == false && options[3] == true){
+      correct = correct + 1;
+    }
+    setCookie(username, answered, correct);
+    redirect("cosineMathML.html");
+  }
+  function clearClicked(){
+    options = [false, false, false, false];
+    for(var i = 0; i < options.length; i++){
+      var id = "option"+i;
+      document.getElementById(id).classList.add('unchecked');
+    }
+  }
+
+  </script>
   <style>
   Html, body{
 	height:100%;
@@ -18,7 +65,7 @@
 .childContainer{
     display:table-cell;
     vertical-align:middle;
-    width: 94%;
+    /* width: 54%; */
 }
 .childContainer #loginForm{
   border-left: 2px solid #000;
@@ -27,6 +74,7 @@
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   padding: 10px;
+  height: 355px;
 }
 #title{
   text-align: center;
@@ -52,61 +100,65 @@
   width: 55%;
   box-shadow: 0px 0px 0.5px 0.5px rgb(0, 0, 0);
 }
-.childContainer #loginForm button{
+.childContainer #loginForm .submit-row button{
   margin-right: 6%;
   border-radius: 6px;
   border: 2px solid #000;
   height: 36px;
-      background-color: white;
+  background-color: white;
 }
 p, button, div#title{
   font-family: "Arial", Sans-serif	;
   font-weight: bold;
   font-size: 13px;
 }
-.childContainer #loginForm p:nth-child(3){
-  margin-top: 10%;
-  color: blue;
-}
-
-ul {
-  display: inline-block;
-  list-style: none;
-  margin-left: 3%;
-}
-li:before{
-  content: "¤";
-    display: block;
-    float: left;
-    width: 1.2em;
-}
-li:first-child {
-  margin-bottom: 50px;
-
-}
-.childContainer #loginForm img{
-  margin-left: 206px;
-  padding: 0px;
-}
-  </style>
+.childContainer #loginForm p:nth-child(3){ margin-top: 10%; color: blue; }
+.childContainer #loginForm img{ margin-left: 20%; padding: 0px;margin-top: 10%;}
+.options-row button{ background: transparent;}
+.unchecked{ border: none;}
+.submit-row{ margin-top: 10%;}
+.grandchildContainer .left-panel .submit-row{margin-top: 13%;}
+.left-panel{ width: 55%; float: left;}
+.right-panel{ width: 45%; float: right;}
+.options-row:nth-child(1) { margin-bottom: 40px; }
+.grandchildContainer .left-panel .options-row:nth-child(1){margin-bottom: 50px;}
+.grandchildContainer{ margin-top: 25%; margin-left: 5%;}
+</style>
 </head>
 <body>
   <div class="parentContainer">
     <div class="childContainer">
       <div id="title">Question 1</div>
       <form id="loginForm">
-        <p>Given points (x1, y1) and (x2, y2) select the formula to find the equation of the given line</p>
-        <ul>
-          <li><math display='block'><mrow><mi>y</mi><mo>=</mo><mi>mx</mi><mo>+</mo><mi>b</mi></mrow></math></li>
-          <li><math display='block'><mi>y</mi><mo>-</mo><msub><mi>y</mi><mn>1</mn></msub><mo>=</mo><mi>m</mi><mo>(</mo><mi>x</mi><mo>-</mo><msub><mi>x</mi><mn>1</mn></msub><mo>)</mo></math></li>
-        </ul>
-        <ul>
-          <li><math display='block'><mrow><mi>(</mi><mi>x</mi><mo>-</mo><mi>h</mi><msup><mi>)</mi><mn>2</mn></msup><mo>+</mo><mi>(</mi><mi>y</mi><mo>-</mo><mi>k</mi><msup><mi>)</mi><mn>2</mn></msup><mo>=</mo><msup><mi>r</mi><mn>2</mn></msup></math></li>
-          <li><math display='block'><mi>y</mi><mo>-</mo><msub><mi>y</mi><mn>2</mn></msub><mo>=</mo><mfrac><mrow><msub><mi>y</mi><mn>2</mn></msub><mo>-</mo><msub><mi>y</mi><mn>1</mn></msub></mrow><mrow><msub><mi>x</mi><mn>2</mn></msub><mo>-</mo><msub><mi>x</mi><mn>1</mn></mrow></mfrac><mi>(</mi><mi>x</mi><mo>-</mo><msub><mi>x</mi><mn>2</mn></msub><mi>)</mi></math></li>
-        </ul>
-        <img src="coordinates.png"></img>
-        <p><button id="submit" type="button">Submit & Next Question </button>
-        <button id="cancel" type="button">Cancel & Clear Selection </button></p>
+        <div class="left-panel">
+          <p>Given points (x1, y1) and (x2, y2) select the formula to find the equation of the given line.</p>
+            <div class="grandchildContainer">
+              <div class="left-panel">
+                <div class="options-row">
+                  ⦿ <button id="option0" class="unchecked" onclick="optionClicked(0)" type="button"><math display='block'><mrow><mi>y</mi><mo>=</mo><mi>mx</mi><mo>+</mo><mi>b</mi></mrow></math></button></br>
+                </div>
+                <div class="options-row">
+                  ⦿ <button id="option1" class="unchecked" onclick="optionClicked(1)" type="button"><math display='block'><mi>y</mi><mo>-</mo><msub><mi>y</mi><mn>1</mn></msub><mo>=</mo><mi>m</mi><mo>(</mo><mi>x</mi><mo>-</mo><msub><mi>x</mi><mn>1</mn></msub><mo>)</mo></math></button>
+                </div>
+                <div class="submit-row"><button id="submit" onclick="submitClicked()" type="button">Submit & Next Question </button></div>
+              </div>
+              <div class="right-panel">
+                <div class="options-row">
+                  ⦿ <button id="option2" class="unchecked" onclick="optionClicked(2)" type="button"><math display='block'><mrow><mi>(</mi><mi>x</mi><mo>-</mo><mi>h</mi><msup><mi>)</mi><mn>2</mn></msup><mo>+</mo><mi>(</mi><mi>y</mi><mo>-</mo><mi>k</mi><msup><mi>)</mi><mn>2</mn></msup><mo>=</mo><msup><mi>r</mi><mn>2</mn></msup></math></button></br>
+                </div>
+                <div class="options-row">
+                  ⦿ <button id="option3" class="unchecked" onclick="optionClicked(3)" type="button"><math display='block'><mi>y</mi><mo>-</mo><msub><mi>y</mi><mn>2</mn></msub><mo>=</mo><mfrac><mrow><msub><mi>y</mi><mn>2</mn></msub><mo>-</mo><msub><mi>y</mi><mn>1</mn></msub></mrow><mrow><msub><mi>x</mi><mn>2</mn></msub><mo>-</mo><msub><mi>x</mi><mn>1</mn></msub></mrow></mfrac><mfenced><mrow><mi>x</mi><mo>-</mo><msub><mi>x</mi><mn>2</mn></msub></mrow></mfenced></math></button>
+                </div>
+                <div class="submit-row"><button id="cancel" onclick="clearClicked()" type="button">Cancel & Clear Selection </button></div>
+
+              </div>
+            </div>
+
+        </div>
+        <div class="right-panel">
+          <img src="coordinates.png"></img>
+        </div>
+
       </form>
 
     </div>
