@@ -6,13 +6,6 @@
   <script>
   function setCookie(user, answered, correct){
     document.cookie = ""+user+","+answered+","+correct+";";
-    var cookies = document.cookie.split(";");
-    for(var i = 0; i < cookies.length; i++){
-      var tuples = document.cookie.split(",");
-      for(var j = 0; j < tuples.length; j++){
-        alert(tuples[j]);
-      }
-    }
   }
   function redirect(url){
     window.location.href = url;
@@ -97,7 +90,7 @@ p, button, div#title{
       <div id="title"> User Login</div>
       <form id="loginForm">
         <p>Username: <input type="text" id="username" /></p>
-        <p>Password: <input type="text" id="password" /></p>
+        <p>Password: <input type="password" id="password" /></p>
         <p>Create Account/Forgot?
         <button id="loginButton" onclick="buttonClicked()" type="button"> Login </button></p>
       </form>

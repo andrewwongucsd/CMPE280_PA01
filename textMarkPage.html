@@ -13,7 +13,6 @@
     var id = "option"+number;
     if(options[number]){
       options[number] = false;
-      document.getElementById(id).classList.remove('checked');
       document.getElementById(id).classList.add('unchecked');
     }else{
       if(number <= 2){
@@ -55,6 +54,12 @@
     redirect("videoSCO.html");
   }
   function clearClicked(){
+    options = [false, false, false, false, false, false];
+    for(var i = 0; i < options.length; i++){
+      var id = "option"+i;
+      document.getElementById(id).classList.add('unchecked');
+    }
+
 
   }
   function blankClicked(number){
